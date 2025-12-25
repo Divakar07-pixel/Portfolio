@@ -31,6 +31,9 @@ body {
     .navbar nav a {
         margin-left: 15px;
     }
+    .navbar.shrink {
+        padding: 10px 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -40,6 +43,9 @@ body {
     .navbar nav a {
         margin-left: 10px;
         font-size: 14px;
+    }
+    .navbar.shrink {
+        padding: 8px 15px;
     }
 }
 
@@ -184,6 +190,37 @@ html { scroll-behavior: smooth; }
     padding: 25px;
     background: #f5f7fa;
     border-radius: 8px;
+}
+
+/* Mobile adjustments for interest */
+@media (max-width: 768px) {
+    .interest {
+        padding: 40px 20px;
+    }
+    .interest h2,
+    .projects h2 {
+        font-size: 28px;
+    }
+    .interest-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .interest {
+        padding: 30px 15px;
+    }
+    .interest h2,
+    .projects h2 {
+        font-size: 24px;
+    }
+    .card {
+        padding: 15px;
+    }
 }
 
 /* EXPERIENCE */
@@ -347,10 +384,29 @@ html { scroll-behavior: smooth; }
 .btn.github { background: #24292e; }
 .btn:hover { opacity: 0.95; }
 
-/* Stack buttons on small screens and add vertical spacing */
+/* Mobile adjustments for contact */
+@media (max-width: 768px) {
+    .contact-card {
+        padding: 18px;
+        margin: 15px 20px 30px;
+    }
+    .contact-title { font-size: 1.2rem; }
+    .contact-info-line { font-size: 0.9rem; }
+    .contact-links { gap: 16px; }
+    .contact-form-inline { margin-top: 15px; }
+    .contact-form-inline label { font-size: 0.9rem; }
+    .contact-form-inline input,
+    .contact-form-inline textarea { padding: 6px 8px; }
+    .btn { padding: 8px 14px; font-size: 14px; }
+}
+
 @media (max-width: 520px) {
     .contact-links { flex-direction: column; gap: 14px; }
     .btn { width: 100%; }
+    .contact-card {
+        padding: 15px;
+        margin: 10px 15px 20px;
+    }
 }
 
 /* FOOTER */
