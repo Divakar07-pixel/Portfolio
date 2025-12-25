@@ -91,15 +91,12 @@
                         el.style.transitionDelay = delay + 'ms';
                         el.classList.add('visible');
 
-                        // animate skill fill bars if present
-                        const fills = el.querySelectorAll('.skill-fill');
-                        if (fills && fills.length) {
-                            fills.forEach((fill) => {
-                                const pct = fill.dataset.percent || '70';
-                                // apply same simple delay for all fills
-                                fill.style.transitionDelay = delay + 'ms';
-                                // small timeout to allow transitionDelay to apply
-                                setTimeout(() => { fill.style.width = pct + '%'; }, 30);
+                        // stagger skill items if present
+                        const skillItems = el.querySelectorAll('.skill-item');
+                        if (skillItems && skillItems.length) {
+                            skillItems.forEach((item) => {
+                                const itemDelay = item.dataset.skillDelay ? parseInt(item.dataset.skillDelay, 10) : 0;
+                                item.style.transitionDelay = (delay + itemDelay) + 'ms';
                             });
                         }
 
@@ -107,7 +104,8 @@
                         const chips = el.querySelectorAll('.skill-chip');
                         if (chips && chips.length) {
                             chips.forEach((chip) => {
-                                chip.style.transitionDelay = delay + 'ms';
+                                const chipDelay = chip.dataset.skillDelay ? parseInt(chip.dataset.skillDelay, 10) : 0;
+                                chip.style.transitionDelay = (delay + chipDelay) + 'ms';
                             });
                         }
 
@@ -203,30 +201,30 @@
         <div class="card reveal" data-reveal-delay="100">
             <h3>Data Tools & Languages</h3>
             <ul class="skill-list">
-                <li class="skill-item">SQL <div class="skill-bar"><div class="skill-fill" data-percent="85"></div></div></li>
-                <li class="skill-item">MS Excel <div class="skill-bar"><div class="skill-fill" data-percent="92"></div></div></li>
-                <li class="skill-item">Power BI <div class="skill-bar"><div class="skill-fill" data-percent="80"></div></div></li>
-                <li class="skill-item">Python <div class="skill-bar"><div class="skill-fill" data-percent="75"></div></div></li>
-                <li class="skill-item">Tableau <div class="skill-bar"><div class="skill-fill" data-percent="70"></div></div></li>
+                <li class="skill-item" data-skill-delay="0">SQL</li>
+                <li class="skill-item" data-skill-delay="100">MS Excel</li>
+                <li class="skill-item" data-skill-delay="200">Power BI</li>
+                <li class="skill-item" data-skill-delay="300">Python</li>
+                <li class="skill-item" data-skill-delay="400">Tableau</li>
             </ul>
         </div>
 
         <div class="card reveal" data-reveal-delay="200">
             <h3>Analytical Skills</h3>
             <ul class="skill-list">
-                <li class="skill-item">Data Wrangling & Cleaning <div class="skill-bar"><div class="skill-fill" data-percent="88"></div></div></li>
-                <li class="skill-item">Data Visualization <div class="skill-bar"><div class="skill-fill" data-percent="86"></div></div></li>
-                <li class="skill-item">Data Modeling  <div class="skill-bar"><div class="skill-fill" data-percent="65"></div></div></li>
+                <li class="skill-item" data-skill-delay="0">Data Wrangling & Cleaning</li>
+                <li class="skill-item" data-skill-delay="100">Data Visualization</li>
+                <li class="skill-item" data-skill-delay="200">Data Modeling</li>
             </ul>
         </div>
 
         <div class="card reveal" data-reveal-delay="300">
             <h3>Core Strengths</h3>
             <div class="skill-chips">
-                <span class="skill-chip">Quick Learner</span>
-                <span class="skill-chip">Adaptable</span>
-                <span class="skill-chip">Detail-Oriented</span>
-                <span class="skill-chip">Problem-Solving</span>
+                <span class="skill-chip" data-skill-delay="0">Quick Learner</span>
+                <span class="skill-chip" data-skill-delay="100">Adaptable</span>
+                <span class="skill-chip" data-skill-delay="200">Detail-Oriented</span>
+                <span class="skill-chip" data-skill-delay="300">Problem-Solving</span>
             </div>
         </div>
     </div>
