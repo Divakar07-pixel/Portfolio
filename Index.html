@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divakar R | Data Analyst Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <h2 class="logo">Divakar R</h2>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Portfolio</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-text reveal">
+        <p class="intro">Hi,I am</p>
+        <h1>Divakar R</h1>
+        <p class="subtitle">Aspiring Data Analyst</p>
+        <button>View My Work</button>
+    </div>
+
+    <div class="hero-image">
+        <!-- Profile image -->
+        <img class="float reveal" src="Images/Divakar%20R.jpg" alt="Profile">
+    </div>
+</section>
+
+<script>
+    // Run after DOM ready so elements exist
+    document.addEventListener('DOMContentLoaded', function(){
+        const form = document.getElementById('miniContactForm');
+        const nextInput = document.getElementById('_next');
+        const successBox = document.getElementById('formSuccess');
+
+        function getFormData(){
+            return {
+                name: (document.getElementById('c_name') || {}).value ? document.getElementById('c_name').value.trim() : '',
+                phone: (document.getElementById('c_phone') || {}).value ? document.getElementById('c_phone').value.trim() : '',
+                email: (document.getElementById('c_email') || {}).value ? document.getElementById('c_email').value.trim() : '',
+                message: (document.getElementById('c_message') || {}).value ? document.getElementById('c_message').value.trim() : ''
+            };
+        }
+
+        function validate(data){
+            return data.name && data.email && data.message;
+        }
+
+        // If URL contains ?sent=1 show success message
+        if (window.location.search.indexOf('sent=1') !== -1) {
+            if (successBox) { successBox.classList.remove('hidden'); successBox.setAttribute('aria-hidden','false'); }
+        }
+
+        if (!form) return; // nothing to do if form not present
+
+        // On submit, validate and set _next to return with sent=1
+        form.addEventListener('submit', function(e){
+            const data = getFormData();
+            if (!validate(data)){
+                e.preventDefault();
+                alert('Please fill Name, Email and Message.');
+                return false;
+            }
+            // Set _next to same URL with sent=1 so we can show success message after redirect
+            try {
+                var url = window.location.href.split('?')[0];
+                if (nextInput) nextInput.value = url + '?sent=1';
+            } catch(err) { /* ignore */ }
+            // Let the browser submit the form to Formsubmit.co
+        });
+
+        // --- Scroll reveal using IntersectionObserver ---
+        const reveals = document.querySelectorAll('.reveal');
+        if (reveals && reveals.length) {
+            const io = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const delay = el.dataset.revealDelay ? parseInt(el.dataset.revealDelay,10) : 0;
+                        el.style.transitionDelay = delay + 'ms';
+                        el.classList.add('visible');
+
+                        // animate skill fill bars if present
+                        const fills = el.querySelectorAll('.skill-fill');
+                        if (fills && fills.length) {
+                            fills.forEach((fill) => {
+                                const pct = fill.dataset.percent || '70';
+                                // apply same simple delay for all fills
+                                fill.style.transitionDelay = delay + 'ms';
+                                // small timeout to allow transitionDelay to apply
+                                setTimeout(() => { fill.style.width = pct + '%'; }, 30);
+                            });
+                        }
+
+                        // stagger skill chips if present
+                        const chips = el.querySelectorAll('.skill-chip');
+                        if (chips && chips.length) {
+                            chips.forEach((chip) => {
+                                chip.style.transitionDelay = delay + 'ms';
+                            });
+                        }
+
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+            reveals.forEach((el) => io.observe(el));
+        }
+
+        // --- Navbar shrink and active link highlight ---
+        const header = document.querySelector('.navbar');
+        const navLinks = document.querySelectorAll('.navbar nav a');
+        // Shrink header on scroll
+        function updateHeader() {
+            if (!header) return;
+            if (window.scrollY > 60) header.classList.add('shrink'); else header.classList.remove('shrink');
+        }
+        updateHeader();
+        window.addEventListener('scroll', updateHeader, { passive: true });
+
+        // Highlight nav links based on section in view
+        const sections = document.querySelectorAll('section[id]');
+        if (sections.length && navLinks.length) {
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.target.id) return;
+                    const id = entry.target.id;
+                    const selector = `.navbar nav a[href="#${id}"]`;
+                    const link = document.querySelector(selector);
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(a => a.classList.remove('active'));
+                        if (link) link.classList.add('active');
+                    }
+                });
+            }, { root: null, threshold: 0.45 });
+            sections.forEach(s => sectionObserver.observe(s));
+        }
+    });
+</script>
+
+<!-- ABOUT -->
+<section class="interest" id="about">
+    <div class="two-column">
+        <div class="about-grid reveal">
+            <h2 class="reveal" data-reveal-delay="100">About Me</h2>
+            <p class="sub reveal" data-reveal-delay="200">
+                I am a data-oriented professional with a B.Com in Accounting & Finance from Mohammed Sathak College of Arts and Science. I currently work as an Operations Executive at ArmsoftTechAir, supporting operational processes and using data to improve efficiency. I have practical experience in data analysis, visualization, and reporting using Excel, SQL, Power BI, Python, and Tableau. During my internship, I supported data collection, cleaning, and dashboard development to deliver actionable business insights and automate reporting processes.
+            </p>
+        </div>
+
+
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="interest" id="experience">
+    <h2>Experience</h2>
+    <div class="experience-grid">
+        <article class="cert-card internship-card reveal" data-reveal-delay="70">
+            <img class="cert-logo-img" src="Images/SIT.png" alt="Shanthi IT Solution logo">
+            <h4>Data Analyst Intern</h4>
+            <p class="cert-meta">Shanthi IT Solution, Chennai <span class="cert-date">July 2024 – Oct 2024</span></p>
+            <a class="cert-link" href="Certificates/Divakar R Data Analytics Internship.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
+            <p class="sub"></p>
+            <ul>
+                <li>Assisted in data collection, cleaning, and preprocessing using SQL &amp; Excel</li>
+                <li>Built interactive Power BI dashboards for real-time client projects</li>
+                <li>Generated weekly reports with KPIs and actionable insights</li>
+                <li>Automated reporting tasks using DAX, reducing manual effort</li>
+            </ul>
+        </article>
+
+        <article class="cert-card work-card reveal" data-reveal-delay="110">
+            <div class="cert-logo" role="img" aria-label="ArmsoftTechAir logo">AS</div>
+            <h4>Operations Executive</h4>
+            <p class="cert-meta">ArmsoftTechAir <span class="cert-date">Dec 2025 – Present</span></p>
+            <p class="sub">Supporting operational processes, building reports, and improving workflows using data analysis and Excel/SQL.</p>
+            <ul>
+                <li>Improved process efficiency through data-driven insights</li>
+                <li>Prepared weekly reports and dashboards</li>
+                <li>Collaborated cross-functionally to implement changes</li>
+            </ul>
+        </article>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="interest" id="skills">
+    <h2>Technical Skills</h2>
+
+    <div class="interest-grid">
+        <div class="card reveal" data-reveal-delay="100">
+            <h3>Data Tools & Languages</h3>
+            <ul class="skill-list">
+                <li class="skill-item">SQL <div class="skill-bar"><div class="skill-fill" data-percent="85"></div></div></li>
+                <li class="skill-item">MS Excel <div class="skill-bar"><div class="skill-fill" data-percent="92"></div></div></li>
+                <li class="skill-item">Power BI <div class="skill-bar"><div class="skill-fill" data-percent="80"></div></div></li>
+                <li class="skill-item">Python <div class="skill-bar"><div class="skill-fill" data-percent="75"></div></div></li>
+                <li class="skill-item">Tableau <div class="skill-bar"><div class="skill-fill" data-percent="70"></div></div></li>
+            </ul>
+        </div>
+
+        <div class="card reveal" data-reveal-delay="200">
+            <h3>Analytical Skills</h3>
+            <ul class="skill-list">
+                <li class="skill-item">Data Wrangling & Cleaning <div class="skill-bar"><div class="skill-fill" data-percent="88"></div></div></li>
+                <li class="skill-item">Data Visualization <div class="skill-bar"><div class="skill-fill" data-percent="86"></div></div></li>
+                <li class="skill-item">Data Modeling  <div class="skill-bar"><div class="skill-fill" data-percent="65"></div></div></li>
+            </ul>
+        </div>
+
+        <div class="card reveal" data-reveal-delay="300">
+            <h3>Core Strengths</h3>
+            <div class="skill-chips">
+                <span class="skill-chip">Quick Learner</span>
+                <span class="skill-chip">Adaptable</span>
+                <span class="skill-chip">Detail-Oriented</span>
+                <span class="skill-chip">Problem-Solving</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+    <h2>My Latest Projects</h2>
+    <p class="sub">Take a look at my recent data analytics work</p>
+
+    <div class="project-grid">
+
+        <div class="project-card reveal" data-reveal-delay="80">
+            <img src="Images/Screenshot (321).png" alt="Movie Analysis Dashboard">
+            <ul class="project-bullets">
+                <li>Collected and cleaned 5K+ movie & TV show records (Excel)</li>
+                <li>Analyzed trends and key metrics using Power BI</li>
+                <li>Built interactive dashboards for:
+                    <ul>
+                        <li>Genre popularity</li>
+                        <li>Country-wise production</li>
+                        <li>Rating distribution</li>
+                        <li>Release trends</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="project-card reveal" data-reveal-delay="140">
+            <img src="Images/Screenshot (55).png" alt="IPL Data Analysis">
+            <h3>IPL Data Analysis Dashboard</h3>
+            <p>
+                <ul class="project-bullets">
+                    <li>Cleaned and analyzed IPL datasets using Excel and PowerBI</li>
+                    <li>Created dashboards highlighting player performance, match trends,
+                        win percentages, and key performers.</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="project-card reveal" data-reveal-delay="200">
+            <img src="Images/Screenshot (322).png" alt="Bank Loan Analysis">
+            <h3>Business Dashboard (Internship)</h3>
+            <ul class="project-bullets">
+                <li>Analyzed bank loan data to classify loans into Good Loans (Fully Paid, Current) and Bad Loans (Charged Off).</li>
+                <li>Calculated Good Loan Percentage using conditional aggregation to measure overall loan portfolio quality.</li>
+                <li>Identified the total number of good loan applications to evaluate borrower reliability.</li>
+                <li>Computed total funded amount for good loans to assess capital allocation efficiency.</li>
+                <li>Calculated total amount received from good loans to measure repayment performance.</li>
+                <li>Derived Bad Loan Percentage to evaluate default risk within the loan portfolio.</li>
+                <li>Used CASE WHEN conditions, COUNT, and SUM functions to generate actionable KPIs.</li>
+                <li>Delivered data-driven insights to support risk assessment and loan performance monitoring.</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- CERTIFICATIONS -->
+<!-- CERTIFICATIONS -->
+<section class="interest" id="certifications">
+    <h2>Certifications</h2>
+
+    <div class="cert-grid">
+        <article class="cert-card reveal" data-reveal-delay="80">
+            <img class="cert-logo-img" src="Images/BT.jpeg" alt="Besant Technologies logo">
+            <h4>Data Analytics Course</h4>
+            <p class="cert-meta">Besant Technologies, Chennai</p>
+            <!-- Replace href with real certificate link or PDF -->
+            <a class="cert-link" href="Certificates/Divakar R data nalytics.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
+        </article>
+
+        <article class="cert-card reveal" data-reveal-delay="140">
+            <img class="cert-logo-img" src="Images/Tata.svg" alt="Tata Group logo">
+            <h4>Data Visualization Job Simulation</h4>
+            <p class="cert-meta">Tata Group (Forage)</p>
+            <a class="cert-link" href="Certificates/Forage_TATA_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
+        </article>
+
+        <article class="cert-card reveal" data-reveal-delay="200">
+            <img class="cert-logo-img" src="Images/PwC.svg" alt="PwC logo">
+            <h4>Power BI Job Simulation</h4>
+            <p class="cert-meta">PwC Switzerland (Forage)</p>
+            <a class="cert-link" href="Certificates/Forage_PWC_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
+        </article>
+
+        <article class="cert-card reveal" data-reveal-delay="260">
+            <img class="cert-logo-img" src="Images/Deloitte.svg" alt="Deloitte logo">
+            <h4>Data Analytics Job Simulation</h4>
+            <p class="cert-meta">Deloitte Australia (Forage)</p>
+            <a class="cert-link" href="Certificates/Forage_Deloite_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
+        </article>
+    </div>
+</section>
+
+<!-- RESUME -->
+<section class="interest" id="resume">
+    <h2>Resume</h2>
+    <p class="sub">Download my resume to learn more about my experience and skills.</p>
+    <div class="resume-download">
+        <a href="Divakar R Data Analytic Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn primary">View Resume</a>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="projects" id="contact">
+    <h2>Contact</h2>
+
+    <div class="contact-card reveal" role="region" aria-label="Contact links" data-reveal-delay="320">
+        <p class="contact-title">Contact</p>
+
+        <div class="contact-info">
+            <p class="contact-info-line">✉️ Email: <a href="mailto:diwakarsurya2@gmail.com">diwakarsurya2@gmail.com</a></p>
+            <p class="contact-info-line">📞 Phone: <a href="tel:+919345716488">+91 9345716488</a></p>
+        </div>
+
+        <div class="contact-links">
+            <a class="btn linkedin" href="https://www.linkedin.com/in/divakar-r-688403337" target="_blank" rel="noopener noreferrer">Click for LinkedIn</a>
+            <a class="btn github" href="https://github.com/Divakar07-pixel" target="_blank" rel="noopener noreferrer">Click for GitHub</a>
+        </div>
+
+        <!-- Inline contact form (simple) — posts to Formsubmit.co -->
+        <div class="contact-form-inline">
+            <p class="form-title">Or send me a message</p>
+            <form id="miniContactForm" action="https://formsubmit.co/diwakarsurya2@gmail.com" method="POST">
+                <!-- Formsubmit hidden controls; _next will be set on submit to return with ?sent=1 -->
+                <input type="hidden" name="_subject" value="Portfolio contact">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" id="_next" value="">
+                <label>Name
+                    <input type="text" id="c_name" name="name" required>
+                </label>
+
+                <label>Number (optional)
+                    <input type="tel" id="c_phone" name="phone">
+                </label>
+
+                <label>Email
+                    <input type="email" id="c_email" name="email" required>
+                </label>
+
+                <label>Message
+                    <textarea id="c_message" name="message" rows="3" required></textarea>
+                </label>
+
+                <div class="form-actions-inline">
+                    <button type="submit" id="sendBtn" class="btn primary">Send</button>
+                </div>
+            </form>
+
+            <div id="formSuccess" class="form-success hidden" role="status" aria-hidden="true">Thank you — your message was sent.</div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Divakar R | Data Analyst Portfolio</p>
+</footer>
+
+</body>
+</html>
