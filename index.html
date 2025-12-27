@@ -11,12 +11,18 @@
 <!-- NAVBAR -->
 <header class="navbar">
     <h2 class="logo">Divakar R</h2>
-    <nav>
+    <button class="hamburger" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav class="nav-menu">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
-        <a href="#projects">Portfolio</a>
+        <a href="#projects">Project</a>
+        <a href="#certifications">Certifications</a>
         <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
     </nav>
@@ -144,6 +150,16 @@
             }, { root: null, threshold: 0.45 });
             sections.forEach(s => sectionObserver.observe(s));
         }
+
+        // --- Hamburger menu toggle ---
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
     });
 </script>
 
@@ -151,7 +167,7 @@
 <section class="interest" id="about">
     <div class="two-column">
         <div class="about-grid reveal">
-            <h2 class="reveal" data-reveal-delay="100">About Me</h2>
+            <h2>About Me</h2>
             <p class="sub reveal" data-reveal-delay="200">
                 I am a data-oriented professional with a B.Com in Accounting & Finance from Mohammed Sathak College of Arts and Science. I currently work as an Operations Executive at ArmsoftTechAir, supporting operational processes and using data to improve efficiency. I have practical experience in data analysis, visualization, and reporting using Excel, SQL, Power BI, Python, and Tableau. During my internship, I supported data collection, cleaning, and dashboard development to deliver actionable business insights and automate reporting processes.
             </p>
@@ -165,7 +181,19 @@
 <section class="interest" id="experience">
     <h2>Experience</h2>
     <div class="experience-grid">
-        <article class="cert-card internship-card reveal" data-reveal-delay="70">
+        <article class="cert-card work-card reveal" data-reveal-delay="70">
+            <img class="cert-logo-img" src="Images/AS.jpeg" alt="ArmsoftTechAir logo">
+            <h4>Operations Executive</h4>
+            <p class="cert-meta">ArmsoftTechAir <span class="cert-date">Dec 2024 – Present</span></p>
+            <p class="sub">Supporting operational processes, building reports, and improving workflows using data analysis and Excel/SQL.</p>
+            <ul>
+                <li>Improved process efficiency through data-driven insights</li>
+                <li>Prepared weekly reports and dashboards</li>
+                <li>Collaborated cross-functionally to implement changes</li>
+            </ul>
+        </article>
+
+        <article class="cert-card internship-card reveal" data-reveal-delay="110">
             <img class="cert-logo-img" src="Images/SIT.png" alt="Shanthi IT Solution logo">
             <h4>Data Analyst Intern</h4>
             <p class="cert-meta">Shanthi IT Solution, Chennai <span class="cert-date">July 2024 – Oct 2024</span></p>
@@ -176,18 +204,6 @@
                 <li>Built interactive Power BI dashboards for real-time client projects</li>
                 <li>Generated weekly reports with KPIs and actionable insights</li>
                 <li>Automated reporting tasks using DAX, reducing manual effort</li>
-            </ul>
-        </article>
-
-        <article class="cert-card work-card reveal" data-reveal-delay="110">
-            <div class="cert-logo" role="img" aria-label="ArmsoftTechAir logo">AS</div>
-            <h4>Operations Executive</h4>
-            <p class="cert-meta">ArmsoftTechAir <span class="cert-date">Dec 2025 – Present</span></p>
-            <p class="sub">Supporting operational processes, building reports, and improving workflows using data analysis and Excel/SQL.</p>
-            <ul>
-                <li>Improved process efficiency through data-driven insights</li>
-                <li>Prepared weekly reports and dashboards</li>
-                <li>Collaborated cross-functionally to implement changes</li>
             </ul>
         </article>
     </div>
@@ -206,6 +222,8 @@
                 <li class="skill-item" data-skill-delay="200">Power BI</li>
                 <li class="skill-item" data-skill-delay="300">Python</li>
                 <li class="skill-item" data-skill-delay="400">Tableau</li>
+                <li class="skill-item" data-skill-delay="500">SharePoint</li>
+                
             </ul>
         </div>
 
@@ -215,18 +233,10 @@
                 <li class="skill-item" data-skill-delay="0">Data Wrangling & Cleaning</li>
                 <li class="skill-item" data-skill-delay="100">Data Visualization</li>
                 <li class="skill-item" data-skill-delay="200">Data Modeling</li>
+                <li class="skill-item" data-skill-delay="300">Statistical Analysis</li>
             </ul>
         </div>
 
-        <div class="card reveal" data-reveal-delay="300">
-            <h3>Core Strengths</h3>
-            <div class="skill-chips">
-                <span class="skill-chip" data-skill-delay="0">Quick Learner</span>
-                <span class="skill-chip" data-skill-delay="100">Adaptable</span>
-                <span class="skill-chip" data-skill-delay="200">Detail-Oriented</span>
-                <span class="skill-chip" data-skill-delay="300">Problem-Solving</span>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -267,7 +277,7 @@
 
         <div class="project-card reveal" data-reveal-delay="200">
             <img src="Images/Screenshot (322).png" alt="Bank Loan Analysis">
-            <h3>BAnk Loan Analysis</h3>
+            <h3>Bank Loan Analysis</h3>
             <ul class="project-bullets">
                 <li>Analyzed bank loan data to classify loans into Good Loans (Fully Paid, Current) and Bad Loans (Charged Off).</li>
                 <li>Calculated Good Loan Percentage using conditional aggregation to measure overall loan portfolio quality.</li>
@@ -288,7 +298,7 @@
 <!-- CERTIFICATIONS -->
 <!-- CERTIFICATIONS -->
 <section class="interest" id="certifications">
-    <h2>Certifications</h2>
+    <h2 class="reveal">Certifications</h2>
 
     <div class="cert-grid">
         <article class="cert-card reveal" data-reveal-delay="80">
@@ -300,21 +310,21 @@
         </article>
 
         <article class="cert-card reveal" data-reveal-delay="140">
-            <img class="cert-logo-img" src="Images/Tata.svg" alt="Tata Group logo">
+            <img class="cert-logo-img" src="Images/TATA.jpg" alt="Tata Group logo">
             <h4>Data Visualization Job Simulation</h4>
             <p class="cert-meta">Tata Group (Forage)</p>
             <a class="cert-link" href="Certificates/Forage_TATA_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
         </article>
 
         <article class="cert-card reveal" data-reveal-delay="200">
-            <img class="cert-logo-img" src="Images/PwC.svg" alt="PwC logo">
+            <img class="cert-logo-img" src="Images/PWC.jpg" alt="PwC logo">
             <h4>Power BI Job Simulation</h4>
             <p class="cert-meta">PwC Switzerland (Forage)</p>
             <a class="cert-link" href="Certificates/Forage_PWC_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
         </article>
 
         <article class="cert-card reveal" data-reveal-delay="260">
-            <img class="cert-logo-img" src="Images/Deloitte.svg" alt="Deloitte logo">
+            <img class="cert-logo-img" src="Images/Deloitte.jpg" alt="Deloitte logo">
             <h4>Data Analytics Job Simulation</h4>
             <p class="cert-meta">Deloitte Australia (Forage)</p>
             <a class="cert-link" href="Certificates/Forage_Deloite_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
