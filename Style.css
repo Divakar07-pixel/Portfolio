@@ -1,4 +1,89 @@
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Welcome Section */
+#welcome {
+  height: 100vh;
+  background: linear-gradient(135deg, #000428, #4f7cff);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-content {
+  text-align: center;
+}
+
+/* Typing Animation */
+.typing {
+  font-size: 3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid white;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards,
+             blink 0.7s infinite;
+}
+
+@keyframes typing {
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Fade text */
+.fade-text {
+  opacity: 0;
+  margin-top: 15px;
+  font-size: 1.2rem;
+  animation: fadeIn 2s ease forwards;
+  animation-delay: 3s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Continue Button */
+.continue-btn {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 12px 30px;
+  background: white;
+  color: #004e92;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 1.5s ease forwards;
+  animation-delay: 4s;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Portfolio Section */
+#home {
+  height: 100vh;
+  padding: 60px;
+}
+
+
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
