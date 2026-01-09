@@ -10,7 +10,7 @@ This is my personal portfolio website showcasing my skills, projects, and experi
 - Excel
 
 ## Live Website
-👉 https://shimmering-semolina-33502e.netlify.app/
+👉 https://divakar07-pixel.github.io/Portfolio/
 
 ## Contact
 📧 Email: diwakarsurya2@gmail.com  
