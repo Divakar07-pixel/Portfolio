@@ -170,6 +170,17 @@
                 navMenu.classList.toggle('active');
             });
         }
+
+        // --- Continue button functionality ---
+        const continueBtn = document.querySelector('.continue-btn');
+        const welcomeSection = document.getElementById('welcome');
+        if (continueBtn && welcomeSection) {
+            continueBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default anchor behavior
+                welcomeSection.style.display = 'none'; // Hide the welcome section
+                document.getElementById('home').scrollIntoView({ behavior: 'smooth' }); // Scroll to home
+            });
+        }
     });
 </script>
 
