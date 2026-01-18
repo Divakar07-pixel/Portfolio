@@ -269,6 +269,13 @@ html { scroll-behavior: smooth; }
     .hero-text h1 { font-size: 36px; }
     .hero-image img { width: 160px; }
 }
+
+@media (max-width: 768px) {
+    #home {
+        height: auto;
+    }
+}
+
 .about-card {
     display: grid;
     grid-template-columns: 1fr 2fr;
