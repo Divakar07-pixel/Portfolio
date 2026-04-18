@@ -609,3 +609,25 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .reveal, .float, .project-card:hover, .cert-card:hover, .btn, .btn::after { transition: none !important; animation: none !important; transform: none !important; }
 }
+
+.project-link {
+  display: inline-block;
+  margin-top: auto;
+  padding: 8px 14px;
+  background: #007bff;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.project-link:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
