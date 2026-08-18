@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divakar R | Data Analyst Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260818">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
-        <a href="#projects">Project</a>
+        <a href="#projects">Projects</a>
         <a href="#certifications">Certifications</a>
         <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
@@ -34,7 +34,6 @@
         <p class="subtitle">Data Analyst</p>
         <button onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View My Work</button>
     </div>
-
     <div class="hero-image">
         <img class="float reveal" src="Images/Divakar%20R.jpg" alt="Divakar R - Data Analyst">
     </div>
@@ -70,7 +69,6 @@
                 <li>Build and maintain Excel-based workflows for recurring operational tasks.</li>
             </ul>
         </article>
-
         <article class="cert-card internship-card reveal" data-reveal-delay="110">
             <img class="cert-logo-img" src="Images/SIT.png" alt="Data Analyst internship">
             <h4>Data Analyst Intern</h4>
@@ -89,189 +87,40 @@
 <section class="interest" id="skills">
     <h2>Technical Skills</h2>
     <div class="interest-grid">
-        <div class="card reveal" data-reveal-delay="100">
-            <h3>Data Analytics</h3>
-            <ul class="skill-list">
-                <li class="skill-item" data-skill-delay="0">SQL</li>
-                <li class="skill-item" data-skill-delay="80">MS Excel</li>
-                <li class="skill-item" data-skill-delay="160">Power Query</li>
-                <li class="skill-item" data-skill-delay="240">Power BI</li>
-                <li class="skill-item" data-skill-delay="320">DAX</li>
-                <li class="skill-item" data-skill-delay="400">Python</li>
-                <li class="skill-item" data-skill-delay="480">Tableau</li>
-            </ul>
-        </div>
-
-        <div class="card reveal" data-reveal-delay="160">
-            <h3>Databases</h3>
-            <ul class="skill-list">
-                <li class="skill-item" data-skill-delay="0">MySQL</li>
-                <li class="skill-item" data-skill-delay="80">PostgreSQL</li>
-                <li class="skill-item" data-skill-delay="160">SQLite</li>
-                <li class="skill-item" data-skill-delay="240">Supabase</li>
-            </ul>
-        </div>
-
-        <div class="card reveal" data-reveal-delay="220">
-            <h3>Automation &amp; Data</h3>
-            <ul class="skill-list">
-                <li class="skill-item" data-skill-delay="0">Excel VBA / Macros</li>
-                <li class="skill-item" data-skill-delay="80">Data Cleaning</li>
-                <li class="skill-item" data-skill-delay="160">Data Transformation</li>
-                <li class="skill-item" data-skill-delay="240">Data Automation</li>
-                <li class="skill-item" data-skill-delay="320">OCR</li>
-                <li class="skill-item" data-skill-delay="400">PDF Processing</li>
-                <li class="skill-item" data-skill-delay="480">Selenium</li>
-            </ul>
-        </div>
-
-        <div class="card reveal" data-reveal-delay="280">
-            <h3>Development &amp; Tools</h3>
-            <ul class="skill-list">
-                <li class="skill-item" data-skill-delay="0">HTML</li>
-                <li class="skill-item" data-skill-delay="80">CSS</li>
-                <li class="skill-item" data-skill-delay="160">JavaScript</li>
-                <li class="skill-item" data-skill-delay="240">Git</li>
-                <li class="skill-item" data-skill-delay="320">GitHub</li>
-            </ul>
-        </div>
+        <div class="card reveal" data-reveal-delay="100"><h3>Data Analytics</h3><ul class="skill-list"><li class="skill-item">SQL</li><li class="skill-item">MS Excel</li><li class="skill-item">Power Query</li><li class="skill-item">Power BI</li><li class="skill-item">DAX</li><li class="skill-item">Python</li><li class="skill-item">Tableau</li></ul></div>
+        <div class="card reveal" data-reveal-delay="160"><h3>Databases</h3><ul class="skill-list"><li class="skill-item">MySQL</li><li class="skill-item">PostgreSQL</li><li class="skill-item">SQLite</li><li class="skill-item">Supabase</li></ul></div>
+        <div class="card reveal" data-reveal-delay="220"><h3>Automation &amp; Data</h3><ul class="skill-list"><li class="skill-item">Excel VBA / Macros</li><li class="skill-item">Data Cleaning</li><li class="skill-item">Data Transformation</li><li class="skill-item">Data Automation</li><li class="skill-item">OCR</li><li class="skill-item">PDF Processing</li><li class="skill-item">Selenium</li></ul></div>
+        <div class="card reveal" data-reveal-delay="280"><h3>Development &amp; Tools</h3><ul class="skill-list"><li class="skill-item">HTML</li><li class="skill-item">CSS</li><li class="skill-item">JavaScript</li><li class="skill-item">Git</li><li class="skill-item">GitHub</li></ul></div>
     </div>
 </section>
 
 <section class="projects" id="projects">
     <h2>Projects</h2>
     <p class="sub">Selected recent analytics and application work.</p>
-
     <div class="project-grid">
-        <article class="project-card project-card-text reveal" data-reveal-delay="80">
-            <span class="project-label">Automation</span>
-            <h3>Election &amp; Voter Data Automation</h3>
-            <ul class="project-bullets">
-                <li>Automated large-scale voter data cleaning, validation, and processing workflows.</li>
-                <li>Used Excel VBA, Python, OCR, and PDF processing for repetitive data tasks.</li>
-                <li>Designed workflows to improve accuracy and reduce manual processing time.</li>
-            </ul>
-        </article>
-
-        <article class="project-card project-card-text reveal" data-reveal-delay="140">
-            <span class="project-label">Python Automation</span>
-            <h3>E-Rolls PDF Downloader</h3>
-            <ul class="project-bullets">
-                <li>Built Python automation for downloading electoral roll PDFs from the portal.</li>
-                <li>Used Selenium, Excel input files, CAPTCHA handling, and batch processing.</li>
-                <li>Added resume and operational controls for large download runs.</li>
-            </ul>
-        </article>
-
-        <article class="project-card project-card-text reveal" data-reveal-delay="200">
-            <span class="project-label">Web Application</span>
-            <h3>Delivery / Order Tracking System</h3>
-            <ul class="project-bullets">
-                <li>Built a delivery tracking application for order and driver workflows.</li>
-                <li>Includes order status tracking, delivery timelines, driver workflows, and location features.</li>
-                <li>Worked with a database-backed web application architecture.</li>
-            </ul>
-        </article>
-
-        <article class="project-card project-card-text reveal" data-reveal-delay="260">
-            <span class="project-label">Dashboard</span>
-            <h3>TeamBoard / Task Management</h3>
-            <ul class="project-bullets">
-                <li>Developed a team task-management dashboard with tasks, notifications, and project workflows.</li>
-                <li>Worked with Supabase for database and application data management.</li>
-                <li>Focused on practical dashboard UI and workflow management.</li>
-            </ul>
-        </article>
+        <article class="project-card project-card-text reveal" data-reveal-delay="80"><span class="project-label">Automation</span><h3>Election &amp; Voter Data Automation</h3><ul class="project-bullets"><li>Automated large-scale voter data cleaning, validation, and processing workflows.</li><li>Used Excel VBA, Python, OCR, and PDF processing for repetitive data tasks.</li><li>Designed workflows to improve accuracy and reduce manual processing time.</li></ul></article>
+        <article class="project-card project-card-text reveal" data-reveal-delay="140"><span class="project-label">Python Automation</span><h3>E-Rolls PDF Downloader</h3><ul class="project-bullets"><li>Built Python automation for downloading electoral roll PDFs from the portal.</li><li>Used Selenium, Excel input files, CAPTCHA handling, and batch processing.</li><li>Added resume and operational controls for large download runs.</li></ul></article>
+        <article class="project-card project-card-text reveal" data-reveal-delay="200"><span class="project-label">Web Application</span><h3>Delivery / Order Tracking System</h3><ul class="project-bullets"><li>Built a delivery tracking application for order and driver workflows.</li><li>Includes order status tracking, delivery timelines, driver workflows, and location features.</li><li>Worked with a database-backed web application architecture.</li></ul></article>
+        <article class="project-card project-card-text reveal" data-reveal-delay="260"><span class="project-label">Dashboard</span><h3>TeamBoard / Task Management</h3><ul class="project-bullets"><li>Developed a team task-management dashboard with tasks, notifications, and project workflows.</li><li>Worked with Supabase for database and application data management.</li><li>Focused on practical dashboard UI and workflow management.</li></ul></article>
     </div>
-
-    <div class="project-more">
-        <a href="more-projects.html" class="project-link">View More Projects →</a>
-    </div>
+    <div class="project-more"><a href="more-projects.html" class="project-link">View More Projects →</a></div>
 </section>
 
 <section class="interest" id="certifications">
     <h2>Certifications</h2>
     <div class="cert-grid">
-        <article class="cert-card reveal" data-reveal-delay="80">
-            <img class="cert-logo-img" src="Images/BT.jpeg" alt="Besant Technologies logo">
-            <h4>Data Analytics Course</h4>
-            <p class="cert-meta">Besant Technologies, Chennai</p>
-            <a class="cert-link" href="Certificates/Divakar R data nalytics.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
-        </article>
-        <article class="cert-card reveal" data-reveal-delay="140">
-            <img class="cert-logo-img" src="Images/TATA.jpg" alt="Tata Group logo">
-            <h4>Data Visualization Job Simulation</h4>
-            <p class="cert-meta">Tata Group (Forage)</p>
-            <a class="cert-link" href="Certificates/Forage_TATA_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
-        </article>
-        <article class="cert-card reveal" data-reveal-delay="200">
-            <img class="cert-logo-img" src="Images/PWC.jpg" alt="PwC logo">
-            <h4>Power BI Job Simulation</h4>
-            <p class="cert-meta">PwC Switzerland (Forage)</p>
-            <a class="cert-link" href="Certificates/Forage_PWC_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
-        </article>
-        <article class="cert-card reveal" data-reveal-delay="260">
-            <img class="cert-logo-img" src="Images/Deloitte.jpg" alt="Deloitte logo">
-            <h4>Data Analytics Job Simulation</h4>
-            <p class="cert-meta">Deloitte Australia (Forage)</p>
-            <a class="cert-link" href="Certificates/Forage_Deloite_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
-        </article>
+        <article class="cert-card reveal" data-reveal-delay="80"><img class="cert-logo-img" src="Images/BT.jpeg" alt="Besant Technologies logo"><h4>Data Analytics Course</h4><p class="cert-meta">Besant Technologies, Chennai</p><a class="cert-link" href="Certificates/Divakar R data nalytics.pdf" target="_blank" rel="noopener noreferrer">View certificate</a></article>
+        <article class="cert-card reveal" data-reveal-delay="140"><img class="cert-logo-img" src="Images/TATA.jpg" alt="Tata Group logo"><h4>Data Visualization Job Simulation</h4><p class="cert-meta">Tata Group (Forage)</p><a class="cert-link" href="Certificates/Forage_TATA_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a></article>
+        <article class="cert-card reveal" data-reveal-delay="200"><img class="cert-logo-img" src="Images/PWC.jpg" alt="PwC logo"><h4>Power BI Job Simulation</h4><p class="cert-meta">PwC Switzerland (Forage)</p><a class="cert-link" href="Certificates/Forage_PWC_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a></article>
+        <article class="cert-card reveal" data-reveal-delay="260"><img class="cert-logo-img" src="Images/Deloitte.jpg" alt="Deloitte logo"><h4>Data Analytics Job Simulation</h4><p class="cert-meta">Deloitte Australia (Forage)</p><a class="cert-link" href="Certificates/Forage_Deloite_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a></article>
     </div>
 </section>
 
-<section class="interest" id="resume">
-    <h2>Resume</h2>
-    <p class="sub">View my latest Data Analytics resume to learn more about my experience, skills, and projects.</p>
-    <div class="resume-download">
-        <a href="Divakar%20R%20Data%20Analytics%20Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn primary">View Resume</a>
-    </div>
-</section>
+<section class="interest" id="resume"><h2>Resume</h2><p class="sub">View my latest Data Analytics resume to learn more about my experience, skills, and projects.</p><div class="resume-download"><a href="Divakar%20R%20Data%20Analytics%20Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn primary">View Resume</a></div></section>
 
-<section class="projects" id="contact">
-    <h2>Contact</h2>
-    <div class="contact-card reveal" role="region" aria-label="Contact links" data-reveal-delay="320">
-        <p class="contact-title">Let's Connect</p>
-        <div class="contact-info">
-            <p class="contact-info-line">✉️ Email: <a href="mailto:diwakarsurya2@gmail.com">diwakarsurya2@gmail.com</a></p>
-            <p class="contact-info-line">📞 Phone: <a href="tel:+919345716488">+91 9345716488</a></p>
-        </div>
+<section class="projects" id="contact"><h2>Contact</h2><div class="contact-card reveal" role="region" aria-label="Contact links" data-reveal-delay="320"><p class="contact-title">Let's Connect</p><div class="contact-info"><p class="contact-info-line">✉️ Email: <a href="mailto:diwakarsurya2@gmail.com">diwakarsurya2@gmail.com</a></p><p class="contact-info-line">📞 Phone: <a href="tel:+919345716488">+91 9345716488</a></p></div><div class="contact-links"><a class="btn linkedin" href="https://www.linkedin.com/in/divakar-r-688403337" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="btn github" href="https://github.com/Divakar07-pixel" target="_blank" rel="noopener noreferrer">GitHub</a></div><div class="contact-form-inline"><p class="form-title">Or send me a message</p><form id="miniContactForm" action="https://formsubmit.co/diwakarsurya2@gmail.com" method="POST"><input type="hidden" name="_subject" value="Portfolio contact"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" id="_next" value=""><label>Name<input type="text" id="c_name" name="name" required></label><label>Mobile No (optional)<input type="tel" id="c_phone" name="phone"></label><label>Email<input type="email" id="c_email" name="email" required></label><label>Message<textarea id="c_message" name="message" rows="3" required></textarea></label><div class="form-actions-inline"><button type="submit" id="sendBtn" class="btn primary">Send</button></div></form><div id="formSuccess" class="form-success hidden" role="status" aria-hidden="true">Thank you — your message was sent.</div></div></div></section>
 
-        <div class="contact-links">
-            <a class="btn linkedin" href="https://www.linkedin.com/in/divakar-r-688403337" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a class="btn github" href="https://github.com/Divakar07-pixel" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-
-        <div class="contact-form-inline">
-            <p class="form-title">Or send me a message</p>
-            <form id="miniContactForm" action="https://formsubmit.co/diwakarsurya2@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="Portfolio contact">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" id="_next" value="">
-                <label>Name
-                    <input type="text" id="c_name" name="name" required>
-                </label>
-                <label>Mobile No (optional)
-                    <input type="tel" id="c_phone" name="phone">
-                </label>
-                <label>Email
-                    <input type="email" id="c_email" name="email" required>
-                </label>
-                <label>Message
-                    <textarea id="c_message" name="message" rows="3" required></textarea>
-                </label>
-                <div class="form-actions-inline">
-                    <button type="submit" id="sendBtn" class="btn primary">Send</button>
-                </div>
-            </form>
-            <div id="formSuccess" class="form-success hidden" role="status" aria-hidden="true">Thank you — your message was sent.</div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>© 2026 Divakar R | Data Analyst Portfolio</p>
-</footer>
-
-<script src="script.js"></script>
+<footer><p>© 2026 Divakar R | Data Analyst Portfolio</p></footer>
+<script src="script.js?v=20260818"></script>
 </body>
 </html>
