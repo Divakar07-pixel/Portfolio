@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const intro = document.getElementById('portfolioIntro');
+    const introContinue = document.getElementById('introContinue');
     const form = document.getElementById('miniContactForm');
     const nextInput = document.getElementById('_next');
     const successBox = document.getElementById('formSuccess');
@@ -9,36 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.navbar nav a');
     const reveals = document.querySelectorAll('.reveal');
 
-    // Show the welcome intro only on the first visit to this portfolio.
-    // Refreshing or returning to the Home page will not show it again.
+    // Show the welcome intro on every page load/refresh. Continue dismisses it for the current visit.
     if (intro) {
-        const introSeenKey = 'divakarPortfolioIntroSeen';
-        let hasSeenIntro = false;
+        document.body.classList.add('intro-lock');
+        intro.setAttribute('aria-hidden', 'false');
 
-        try {
-            hasSeenIntro = localStorage.getItem(introSeenKey) === 'true';
-        } catch (error) {
-            hasSeenIntro = false;
-        }
-
-        if (hasSeenIntro) {
+        const closeIntro = () => {
+            if (intro.classList.contains('hidden')) return;
             intro.classList.add('hidden');
-        } else {
-            document.body.classList.add('intro-lock');
-            intro.setAttribute('aria-hidden', 'false');
+            intro.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('intro-lock');
+        };
 
-            try {
-                localStorage.setItem(introSeenKey, 'true');
-            } catch (error) {
-                // Continue normally if browser storage is unavailable.
-            }
-
-            window.setTimeout(() => {
-                intro.classList.add('hidden');
-                intro.setAttribute('aria-hidden', 'true');
-                document.body.classList.remove('intro-lock');
-            }, 2400);
-        }
+        if (introContinue) introContinue.addEventListener('click', closeIntro);
+        window.setTimeout(closeIntro, 7000);
     }
 
     if (window.location.search.includes('sent=1') && successBox) {
