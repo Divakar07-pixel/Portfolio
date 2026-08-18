@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const intro = document.getElementById('portfolioIntro');
     const form = document.getElementById('miniContactForm');
     const nextInput = document.getElementById('_next');
     const successBox = document.getElementById('formSuccess');
@@ -7,6 +8,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelectorAll('.navbar nav a');
     const reveals = document.querySelectorAll('.reveal');
+
+    // Show the welcome intro only on the first visit to this portfolio.
+    // Refreshing or returning to the Home page will not show it again.
+    if (intro) {
+        const introSeenKey = 'divakarPortfolioIntroSeen';
+        let hasSeenIntro = false;
+
+        try {
+            hasSeenIntro = localStorage.getItem(introSeenKey) === 'true';
+        } catch (error) {
+            hasSeenIntro = false;
+        }
+
+        if (hasSeenIntro) {
+            intro.classList.add('hidden');
+        } else {
+            document.body.classList.add('intro-lock');
+            intro.setAttribute('aria-hidden', 'false');
+
+            try {
+                localStorage.setItem(introSeenKey, 'true');
+            } catch (error) {
+                // Continue normally if browser storage is unavailable.
+            }
+
+            window.setTimeout(() => {
+                intro.classList.add('hidden');
+                intro.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('intro-lock');
+            }, 2400);
+        }
+    }
 
     if (window.location.search.includes('sent=1') && successBox) {
         successBox.classList.remove('hidden');
