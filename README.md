@@ -1,95 +1,75 @@
-# 👋 Hi, I'm Divakar R
+# Divakar R — Data Analyst Portfolio
 
-### 📊 Aspiring Data Analyst | Power BI Developer | SQL Enthusiast
+Personal portfolio website showcasing my experience, analytics work, automation projects, skills, and certifications.
 
-Welcome to my personal portfolio repository. This portfolio highlights my journey, technical skills, projects, and experience in Data Analytics.
+## Profile
 
-## 🚀 About Me
+**Data Analyst | SQL | Power BI | Excel | Data Automation**
 
-I'm a Data Analytics professional with hands-on experience in:
+I have a B.Com in Accounting & Finance and practical experience across data analysis, reporting, visualization, data cleaning, Excel automation, and Python-based workflows.
 
-* 📈 Power BI Dashboard Development
-* 🗄️ SQL Database Management
-* 📊 Advanced Excel & Data Visualization
-* 🔍 Data Cleaning & Transformation
-* 📉 Business Intelligence & Reporting
+### Current Experience
 
-My goal is to transform raw data into meaningful insights that support business decision-making.
+**Operations Executive — Armsoft TechAir**  
+December 2025 – Present
 
----
+- Work on large-scale Election Commission data projects.
+- Perform data cleaning, validation, and processing using Excel, VBA, and Python.
+- Automate repetitive data extraction and processing workflows.
+- Maintain Excel-based operational workflows and reporting processes.
 
-## 🛠️ Tech Stack
+### Previous Experience
 
-<p align="center">
+**Data Analyst Intern — Labmentix**  
+July 2025 – October 2025
 
-<img src="https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black"/>
+- Worked with SQL and Excel for data preparation and analysis.
+- Built Power BI dashboards and KPI reports.
+- Applied DAX and data visualization techniques.
 
-<img src="https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white"/>
+## Core Skills
 
-<img src="https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white"/>
+- **Data Analytics:** SQL, Excel, Power Query, Power BI, DAX, Python, Tableau
+- **Databases:** MySQL, PostgreSQL, SQLite, Supabase
+- **Automation & Data:** VBA/Macros, Data Cleaning, Data Transformation, OCR, PDF Processing, Selenium
+- **Development & Tools:** HTML, CSS, JavaScript, Git, GitHub
 
-<img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+## Projects
 
-<img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
+### Featured on the Portfolio
 
-</p>
+- Election & Voter Data Automation
+- E-Rolls PDF Downloader & Automation
+- Delivery / Order Tracking System
+- TeamBoard / Task Management
 
----
+### Additional Projects
 
-## 🌟 Featured Projects
+- Movie Analysis Dashboard
+- IPL Data Analysis Dashboard
+- Bank Loan Analysis
+- My Daily Tracker
+- MediBuddy Health Insurance Analysis
 
-### 📊 Coffee Sales Dashboard
+## Portfolio
 
-Interactive Power BI dashboard analyzing sales performance, product trends, and revenue insights.
+**Live website:** https://divakar07-pixel.github.io/Portfolio/
 
-### 🏏 IPL Data Analysis Dashboard
+## Contact
 
-Comprehensive cricket analytics dashboard built using Power BI and DAX.
+- **Email:** diwakarsurya2@gmail.com
+- **GitHub:** https://github.com/Divakar07-pixel
+- **LinkedIn:** https://www.linkedin.com/in/divakar-r-688403337
 
-### 🏥 MediBuddy Health Insurance Analysis
+## Repository Structure
 
-Excel-based business analysis project with data cleaning, visualization, and reporting.
-
-### 🦠 COVID-19 National Analysis
-
-Data-driven insights and trend analysis using Power BI.
-
----
-
-## 🌐 Portfolio Website
-
-### 🔗 Visit My Portfolio
-
-👉 **Portfolio:**
-https://divakar07-pixel.github.io/Portfolio/
-
----
-
-## 📫 Connect With Me
-
-📧 **Email:**
-[diwakarsurya2@gmail.com](mailto:diwakarsurya2@gmail.com)
-
-💼 **LinkedIn:**
-Add your LinkedIn profile URL here
-
-🐙 **GitHub:**
-https://github.com/divakar07-pixel
-
----
-
-## 📈 GitHub Stats
-
-<p align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=divakar07-pixel&show_icons=true&theme=tokyonight" />
-</p>
-
-<p align="center">
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=divakar07-pixel&theme=tokyonight" />
-</p>
-
----
-
-<p align="center">
-✨ Turning Data into Insights | Insights into Decisions ✨
-</p>
+```text
+Portfolio/
+├── index.html
+├── more-projects.html
+├── style.css
+├── script.js
+├── Images/
+├── Certificates/
+└── Divakar R Data Analytics Resume.pdf
+```
