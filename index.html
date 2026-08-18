@@ -8,17 +8,6 @@
 </head>
 <body>
 
-<!-- Welcome Section -->
-<section id="welcome" style="display: none;">
-  <div class="welcome-content">
-    <h1 class="typing">Welcome to My Portfolio</h1>
-    <p class="fade-text">I'm Divakar R<br>Data Analyst</p>
-    <p class="fade-text" style="animation-delay: 3.5s;">Data Analyst | BI | Data Automation</p>
-    <a href="#home" class="continue-btn">Continue</a>
-  </div>
-</section>
-
-<!-- NAVBAR -->
 <header class="navbar">
     <h2 class="logo">Divakar R</h2>
     <button class="hamburger" aria-label="Toggle navigation menu">
@@ -38,10 +27,9 @@
     </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero" id="home">
     <div class="hero-text reveal">
-        <p class="intro">Hi,I am</p>
+        <p class="intro">Hi, I am</p>
         <h1>Divakar R</h1>
         <p class="subtitle">Data Analyst</p>
         <button onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View My Work</button>
@@ -52,131 +40,12 @@
     </div>
 </section>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function(){
-        const form = document.getElementById('miniContactForm');
-        const nextInput = document.getElementById('_next');
-        const successBox = document.getElementById('formSuccess');
-
-        function getFormData(){
-            return {
-                name: (document.getElementById('c_name') || {}).value ? document.getElementById('c_name').value.trim() : '',
-                phone: (document.getElementById('c_phone') || {}).value ? document.getElementById('c_phone').value.trim() : '',
-                email: (document.getElementById('c_email') || {}).value ? document.getElementById('c_email').value.trim() : '',
-                message: (document.getElementById('c_message') || {}).value ? document.getElementById('c_message').value.trim() : ''
-            };
-        }
-
-        function validate(data){
-            return data.name && data.email && data.message;
-        }
-
-        if (window.location.search.indexOf('sent=1') !== -1) {
-            if (successBox) { successBox.classList.remove('hidden'); successBox.setAttribute('aria-hidden','false'); }
-        }
-
-        if (form) {
-            form.addEventListener('submit', function(e){
-                const data = getFormData();
-                if (!validate(data)){
-                    e.preventDefault();
-                    alert('Please fill Name, Email and Message.');
-                    return false;
-                }
-                try {
-                    var url = window.location.href.split('?')[0];
-                    if (nextInput) nextInput.value = url + '?sent=1';
-                } catch(err) { /* ignore */ }
-            });
-        }
-
-        const reveals = document.querySelectorAll('.reveal');
-        if (reveals && reveals.length) {
-            const io = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target;
-                        const delay = el.dataset.revealDelay ? parseInt(el.dataset.revealDelay,10) : 0;
-                        el.style.transitionDelay = delay + 'ms';
-                        el.classList.add('visible');
-
-                        const skillItems = el.querySelectorAll('.skill-item');
-                        if (skillItems && skillItems.length) {
-                            skillItems.forEach((item) => {
-                                const itemDelay = item.dataset.skillDelay ? parseInt(item.dataset.skillDelay, 10) : 0;
-                                item.style.transitionDelay = (delay + itemDelay) + 'ms';
-                            });
-                        }
-
-                        const chips = el.querySelectorAll('.skill-chip');
-                        if (chips && chips.length) {
-                            chips.forEach((chip) => {
-                                const chipDelay = chip.dataset.skillDelay ? parseInt(chip.dataset.skillDelay, 10) : 0;
-                                chip.style.transitionDelay = (delay + chipDelay) + 'ms';
-                            });
-                        }
-
-                        observer.unobserve(el);
-                    }
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-            reveals.forEach((el) => io.observe(el));
-        }
-
-        const header = document.querySelector('.navbar');
-        const navLinks = document.querySelectorAll('.navbar nav a');
-        function updateHeader() {
-            if (!header) return;
-            if (window.scrollY > 60) header.classList.add('shrink'); else header.classList.remove('shrink');
-        }
-        updateHeader();
-        window.addEventListener('scroll', updateHeader, { passive: true });
-
-        const sections = document.querySelectorAll('section[id]');
-        if (sections.length && navLinks.length) {
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (!entry.target.id) return;
-                    const id = entry.target.id;
-                    const selector = `.navbar nav a[href="#${id}"]`;
-                    const link = document.querySelector(selector);
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(a => a.classList.remove('active'));
-                        if (link) link.classList.add('active');
-                    }
-                });
-            }, { root: null, threshold: 0.45 });
-            sections.forEach(s => sectionObserver.observe(s));
-        }
-
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        if (hamburger && navMenu) {
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
-        }
-
-        const continueBtn = document.querySelector('.continue-btn');
-        const welcomeSection = document.getElementById('welcome');
-        if (continueBtn && welcomeSection) {
-            continueBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                welcomeSection.style.display = 'none';
-                document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
-            });
-        }
-    });
-</script>
-
-<!-- ABOUT -->
 <section class="interest" id="about">
     <div class="grid">
         <h2>About Me</h2>
         <div class="two-column">
             <div class="about-grid reveal">
-                I am a data-oriented professional with a B.Com in Accounting &amp; Finance from Mohammed Sathak College of Arts and Science. I currently work as an Operations Executive at Armsoft TechAir, where I support data-driven operational work and process improvement.
+                I am a data-oriented professional with a B.Com in Accounting &amp; Finance from Mohammed Sathak College of Arts and Science. I currently work as an Operations Executive at Armsoft TechAir, supporting data-driven operational work and process improvement.
                 <br><br>
                 I have practical experience in data analysis, reporting, visualization, data cleaning, and automation using Excel, SQL, Power BI, Python, and Tableau. My current work also involves Excel VBA/macros and processing large-scale voter data for Election Commission projects.
                 <br><br>
@@ -186,7 +55,6 @@
     </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section class="interest" id="experience">
     <h2>Experience</h2>
     <div class="experience-grid">
@@ -218,160 +86,111 @@
     </div>
 </section>
 
-<!-- SKILLS -->
 <section class="interest" id="skills">
     <h2>Technical Skills</h2>
-
     <div class="interest-grid">
         <div class="card reveal" data-reveal-delay="100">
             <h3>Data Analytics</h3>
             <ul class="skill-list">
                 <li class="skill-item" data-skill-delay="0">SQL</li>
-                <li class="skill-item" data-skill-delay="100">MS Excel</li>
-                <li class="skill-item" data-skill-delay="200">Power Query</li>
-                <li class="skill-item" data-skill-delay="300">Power BI</li>
-                <li class="skill-item" data-skill-delay="400">DAX</li>
-                <li class="skill-item" data-skill-delay="500">Python</li>
-                <li class="skill-item" data-skill-delay="600">Tableau</li>
+                <li class="skill-item" data-skill-delay="80">MS Excel</li>
+                <li class="skill-item" data-skill-delay="160">Power Query</li>
+                <li class="skill-item" data-skill-delay="240">Power BI</li>
+                <li class="skill-item" data-skill-delay="320">DAX</li>
+                <li class="skill-item" data-skill-delay="400">Python</li>
+                <li class="skill-item" data-skill-delay="480">Tableau</li>
             </ul>
         </div>
 
-        <div class="card reveal" data-reveal-delay="200">
+        <div class="card reveal" data-reveal-delay="160">
             <h3>Databases</h3>
             <ul class="skill-list">
                 <li class="skill-item" data-skill-delay="0">MySQL</li>
-                <li class="skill-item" data-skill-delay="100">PostgreSQL</li>
-                <li class="skill-item" data-skill-delay="200">SQLite</li>
-                <li class="skill-item" data-skill-delay="300">Supabase</li>
+                <li class="skill-item" data-skill-delay="80">PostgreSQL</li>
+                <li class="skill-item" data-skill-delay="160">SQLite</li>
+                <li class="skill-item" data-skill-delay="240">Supabase</li>
             </ul>
         </div>
 
-        <div class="card reveal" data-reveal-delay="300">
+        <div class="card reveal" data-reveal-delay="220">
             <h3>Automation &amp; Data</h3>
             <ul class="skill-list">
                 <li class="skill-item" data-skill-delay="0">Excel VBA / Macros</li>
-                <li class="skill-item" data-skill-delay="100">Data Cleaning</li>
-                <li class="skill-item" data-skill-delay="200">Data Transformation</li>
-                <li class="skill-item" data-skill-delay="300">Data Automation</li>
-                <li class="skill-item" data-skill-delay="400">OCR</li>
-                <li class="skill-item" data-skill-delay="500">PDF Processing</li>
-                <li class="skill-item" data-skill-delay="600">Selenium</li>
+                <li class="skill-item" data-skill-delay="80">Data Cleaning</li>
+                <li class="skill-item" data-skill-delay="160">Data Transformation</li>
+                <li class="skill-item" data-skill-delay="240">Data Automation</li>
+                <li class="skill-item" data-skill-delay="320">OCR</li>
+                <li class="skill-item" data-skill-delay="400">PDF Processing</li>
+                <li class="skill-item" data-skill-delay="480">Selenium</li>
             </ul>
         </div>
 
-        <div class="card reveal" data-reveal-delay="400">
+        <div class="card reveal" data-reveal-delay="280">
             <h3>Development &amp; Tools</h3>
             <ul class="skill-list">
                 <li class="skill-item" data-skill-delay="0">HTML</li>
-                <li class="skill-item" data-skill-delay="100">CSS</li>
-                <li class="skill-item" data-skill-delay="200">JavaScript</li>
-                <li class="skill-item" data-skill-delay="300">Git</li>
-                <li class="skill-item" data-skill-delay="400">GitHub</li>
+                <li class="skill-item" data-skill-delay="80">CSS</li>
+                <li class="skill-item" data-skill-delay="160">JavaScript</li>
+                <li class="skill-item" data-skill-delay="240">Git</li>
+                <li class="skill-item" data-skill-delay="320">GitHub</li>
             </ul>
         </div>
     </div>
 </section>
 
-<!-- PROJECTS -->
 <section class="projects" id="projects">
-    <h2>Featured Projects</h2>
-    <p class="sub">A selection of my data analytics and development work</p>
+    <h2>Projects</h2>
+    <p class="sub">Selected recent analytics and application work.</p>
 
     <div class="project-grid">
-        <div class="project-card reveal" data-reveal-delay="80">
-            <img src="Images/Screenshot%20(321).png" alt="Movie Analysis Dashboard">
-            <h3>Movie Analysis Dashboard</h3>
-            <ul class="project-bullets">
-                <li>Cleaned 5K+ movie and TV show records using Excel.</li>
-                <li>Analyzed trends and key metrics using Power BI.</li>
-                <li>Built interactive views for genre, country, ratings, and release trends.</li>
-            </ul>
-        </div>
-
-        <div class="project-card reveal" data-reveal-delay="140">
-            <img src="Images/Screenshot%20(55).png" alt="IPL Data Analysis Dashboard">
-            <h3>IPL Data Analysis Dashboard</h3>
-            <ul class="project-bullets">
-                <li>Cleaned and analyzed IPL datasets using Excel and Power BI.</li>
-                <li>Created dashboards for player performance, match trends, win percentages, and key performers.</li>
-            </ul>
-        </div>
-
-        <div class="project-card reveal" data-reveal-delay="200">
-            <img src="Images/Screenshot%20(322).png" alt="Bank Loan Analysis">
-            <h3>Bank Loan Analysis</h3>
-            <ul class="project-bullets">
-                <li>Analyzed loan data to classify good and bad loans.</li>
-                <li>Used SQL aggregation and CASE WHEN logic to calculate portfolio KPIs.</li>
-                <li>Evaluated funded amounts, repayments, loan quality, and default risk.</li>
-            </ul>
-        </div>
-
-        <div class="project-card reveal" data-reveal-delay="260">
-            <img src="Images/Screenshot%20(468).png" alt="My Daily Tracker">
-            <h3>My Daily Tracker</h3>
-            <ul class="project-bullets">
-                <li>Built a web-based activity and expense tracking system.</li>
-                <li>Tracks daily activities, time logs, and expenses.</li>
-                <li>Displays daily and monthly summaries with spending charts.</li>
-            </ul>
-            <a href="https://divakar07-pixel.github.io/Daily-tracker/" target="_blank" class="project-link" rel="noopener noreferrer">Live Demo →</a>
-        </div>
-    </div>
-
-    <div style="margin-top:25px; text-align:center;">
-        <a href="#more-projects" class="project-link">View More Projects →</a>
-    </div>
-</section>
-
-<!-- MORE PROJECTS -->
-<section class="projects" id="more-projects">
-    <h2>More Projects</h2>
-    <p class="sub">Explore additional automation, analytics, and application projects</p>
-
-    <div class="project-grid">
-        <div class="project-card reveal" data-reveal-delay="80">
+        <article class="project-card project-card-text reveal" data-reveal-delay="80">
+            <span class="project-label">Automation</span>
             <h3>Election &amp; Voter Data Automation</h3>
             <ul class="project-bullets">
                 <li>Automated large-scale voter data cleaning, validation, and processing workflows.</li>
                 <li>Used Excel VBA, Python, OCR, and PDF processing for repetitive data tasks.</li>
                 <li>Designed workflows to improve accuracy and reduce manual processing time.</li>
             </ul>
-        </div>
+        </article>
 
-        <div class="project-card reveal" data-reveal-delay="140">
-            <h3>E-Rolls PDF Downloader &amp; Automation</h3>
+        <article class="project-card project-card-text reveal" data-reveal-delay="140">
+            <span class="project-label">Python Automation</span>
+            <h3>E-Rolls PDF Downloader</h3>
             <ul class="project-bullets">
                 <li>Built Python automation for downloading electoral roll PDFs from the portal.</li>
                 <li>Used Selenium, Excel input files, CAPTCHA handling, and batch processing.</li>
                 <li>Added resume and operational controls for large download runs.</li>
             </ul>
-        </div>
+        </article>
 
-        <div class="project-card reveal" data-reveal-delay="200">
+        <article class="project-card project-card-text reveal" data-reveal-delay="200">
+            <span class="project-label">Web Application</span>
             <h3>Delivery / Order Tracking System</h3>
             <ul class="project-bullets">
                 <li>Built a delivery tracking application for order and driver workflows.</li>
                 <li>Includes order status tracking, delivery timelines, driver workflows, and location features.</li>
-                <li>Worked with modern web technologies and a database-backed architecture.</li>
+                <li>Worked with a database-backed web application architecture.</li>
             </ul>
-        </div>
+        </article>
 
-        <div class="project-card reveal" data-reveal-delay="260">
+        <article class="project-card project-card-text reveal" data-reveal-delay="260">
+            <span class="project-label">Dashboard</span>
             <h3>TeamBoard / Task Management</h3>
             <ul class="project-bullets">
                 <li>Developed a team task-management dashboard with tasks, notifications, and project workflows.</li>
                 <li>Worked with Supabase for database and application data management.</li>
-                <li>Focused on practical dashboard UI and workflow automation.</li>
+                <li>Focused on practical dashboard UI and workflow management.</li>
             </ul>
-        </div>
+        </article>
+    </div>
+
+    <div class="project-more">
+        <a href="more-projects.html" class="project-link">View More Projects →</a>
     </div>
 </section>
 
-<!-- CERTIFICATIONS -->
 <section class="interest" id="certifications">
-    <h2 class="reveal">Certifications</h2>
-
+    <h2>Certifications</h2>
     <div class="cert-grid">
         <article class="cert-card reveal" data-reveal-delay="80">
             <img class="cert-logo-img" src="Images/BT.jpeg" alt="Besant Technologies logo">
@@ -379,21 +198,18 @@
             <p class="cert-meta">Besant Technologies, Chennai</p>
             <a class="cert-link" href="Certificates/Divakar R data nalytics.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
         </article>
-
         <article class="cert-card reveal" data-reveal-delay="140">
             <img class="cert-logo-img" src="Images/TATA.jpg" alt="Tata Group logo">
             <h4>Data Visualization Job Simulation</h4>
             <p class="cert-meta">Tata Group (Forage)</p>
             <a class="cert-link" href="Certificates/Forage_TATA_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
         </article>
-
         <article class="cert-card reveal" data-reveal-delay="200">
             <img class="cert-logo-img" src="Images/PWC.jpg" alt="PwC logo">
             <h4>Power BI Job Simulation</h4>
             <p class="cert-meta">PwC Switzerland (Forage)</p>
             <a class="cert-link" href="Certificates/Forage_PWC_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
         </article>
-
         <article class="cert-card reveal" data-reveal-delay="260">
             <img class="cert-logo-img" src="Images/Deloitte.jpg" alt="Deloitte logo">
             <h4>Data Analytics Job Simulation</h4>
@@ -403,7 +219,6 @@
     </div>
 </section>
 
-<!-- RESUME -->
 <section class="interest" id="resume">
     <h2>Resume</h2>
     <p class="sub">View my latest Data Analytics resume to learn more about my experience, skills, and projects.</p>
@@ -412,13 +227,10 @@
     </div>
 </section>
 
-<!-- CONTACT -->
 <section class="projects" id="contact">
     <h2>Contact</h2>
-
     <div class="contact-card reveal" role="region" aria-label="Contact links" data-reveal-delay="320">
         <p class="contact-title">Let's Connect</p>
-
         <div class="contact-info">
             <p class="contact-info-line">✉️ Email: <a href="mailto:diwakarsurya2@gmail.com">diwakarsurya2@gmail.com</a></p>
             <p class="contact-info-line">📞 Phone: <a href="tel:+919345716488">+91 9345716488</a></p>
@@ -438,24 +250,19 @@
                 <label>Name
                     <input type="text" id="c_name" name="name" required>
                 </label>
-
                 <label>Mobile No (optional)
                     <input type="tel" id="c_phone" name="phone">
                 </label>
-
                 <label>Email
                     <input type="email" id="c_email" name="email" required>
                 </label>
-
                 <label>Message
                     <textarea id="c_message" name="message" rows="3" required></textarea>
                 </label>
-
                 <div class="form-actions-inline">
                     <button type="submit" id="sendBtn" class="btn primary">Send</button>
                 </div>
             </form>
-
             <div id="formSuccess" class="form-success hidden" role="status" aria-hidden="true">Thank you — your message was sent.</div>
         </div>
     </div>
@@ -465,5 +272,6 @@
     <p>© 2026 Divakar R | Data Analyst Portfolio</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
