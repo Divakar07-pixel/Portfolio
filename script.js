@@ -15,6 +15,34 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('intro-lock');
         intro.setAttribute('aria-hidden', 'false');
 
+        if (introContinue) {
+            Object.assign(introContinue.style, {
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                marginTop: '26px',
+                padding: '11px 22px',
+                border: '1px solid #4f7cff',
+                borderRadius: '7px',
+                background: '#4f7cff',
+                color: '#fff',
+                fontSize: '15px',
+                fontWeight: '700',
+                cursor: 'pointer',
+                transition: 'transform 180ms ease, background 180ms ease'
+            });
+
+            introContinue.addEventListener('mouseenter', () => {
+                introContinue.style.background = '#3f69db';
+                introContinue.style.transform = 'translateY(-2px)';
+            });
+            introContinue.addEventListener('mouseleave', () => {
+                introContinue.style.background = '#4f7cff';
+                introContinue.style.transform = 'translateY(0)';
+            });
+        }
+
         const closeIntro = () => {
             if (intro.classList.contains('hidden')) return;
             intro.classList.add('hidden');
