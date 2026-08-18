@@ -9,11 +9,11 @@
 <body>
 
 <!-- Welcome Section -->
-<section id="welcome">
+<section id="welcome" style="display: none;">
   <div class="welcome-content">
     <h1 class="typing">Welcome to My Portfolio</h1>
-    <p class="fade-text">I'm Divakar R<br>Aspiring Data Analyst</p>
-    <p class="fade-text" style="animation-delay: 3.5s;">Data Enthusiast | Problem Solver</p>
+    <p class="fade-text">I'm Divakar R<br>Data Analyst</p>
+    <p class="fade-text" style="animation-delay: 3.5s;">Data Analyst | BI | Data Automation</p>
     <a href="#home" class="continue-btn">Continue</a>
   </div>
 </section>
@@ -43,18 +43,16 @@
     <div class="hero-text reveal">
         <p class="intro">Hi,I am</p>
         <h1>Divakar R</h1>
-        <p class="subtitle">Aspiring Data Analyst</p>
+        <p class="subtitle">Data Analyst</p>
         <button onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View My Work</button>
     </div>
 
     <div class="hero-image">
-        <!-- Profile image -->
-        <img class="float reveal" src="Images/Divakar%20R.jpg" alt="Profile">
+        <img class="float reveal" src="Images/Divakar%20R.jpg" alt="Divakar R - Data Analyst">
     </div>
 </section>
 
 <script>
-    // Run after DOM ready so elements exist
     document.addEventListener('DOMContentLoaded', function(){
         const form = document.getElementById('miniContactForm');
         const nextInput = document.getElementById('_next');
@@ -73,30 +71,25 @@
             return data.name && data.email && data.message;
         }
 
-        // If URL contains ?sent=1 show success message
         if (window.location.search.indexOf('sent=1') !== -1) {
             if (successBox) { successBox.classList.remove('hidden'); successBox.setAttribute('aria-hidden','false'); }
         }
 
-        if (!form) return; // nothing to do if form not present
+        if (form) {
+            form.addEventListener('submit', function(e){
+                const data = getFormData();
+                if (!validate(data)){
+                    e.preventDefault();
+                    alert('Please fill Name, Email and Message.');
+                    return false;
+                }
+                try {
+                    var url = window.location.href.split('?')[0];
+                    if (nextInput) nextInput.value = url + '?sent=1';
+                } catch(err) { /* ignore */ }
+            });
+        }
 
-        // On submit, validate and set _next to return with sent=1
-        form.addEventListener('submit', function(e){
-            const data = getFormData();
-            if (!validate(data)){
-                e.preventDefault();
-                alert('Please fill Name, Email and Message.');
-                return false;
-            }
-            // Set _next to same URL with sent=1 so we can show success message after redirect
-            try {
-                var url = window.location.href.split('?')[0];
-                if (nextInput) nextInput.value = url + '?sent=1';
-            } catch(err) { /* ignore */ }
-            // Let the browser submit the form to Formsubmit.co
-        });
-
-        // --- Scroll reveal using IntersectionObserver ---
         const reveals = document.querySelectorAll('.reveal');
         if (reveals && reveals.length) {
             const io = new IntersectionObserver((entries, observer) => {
@@ -107,7 +100,6 @@
                         el.style.transitionDelay = delay + 'ms';
                         el.classList.add('visible');
 
-                        // stagger skill items if present
                         const skillItems = el.querySelectorAll('.skill-item');
                         if (skillItems && skillItems.length) {
                             skillItems.forEach((item) => {
@@ -116,7 +108,6 @@
                             });
                         }
 
-                        // stagger skill chips if present
                         const chips = el.querySelectorAll('.skill-chip');
                         if (chips && chips.length) {
                             chips.forEach((chip) => {
@@ -132,10 +123,8 @@
             reveals.forEach((el) => io.observe(el));
         }
 
-        // --- Navbar shrink and active link highlight ---
         const header = document.querySelector('.navbar');
         const navLinks = document.querySelectorAll('.navbar nav a');
-        // Shrink header on scroll
         function updateHeader() {
             if (!header) return;
             if (window.scrollY > 60) header.classList.add('shrink'); else header.classList.remove('shrink');
@@ -143,7 +132,6 @@
         updateHeader();
         window.addEventListener('scroll', updateHeader, { passive: true });
 
-        // Highlight nav links based on section in view
         const sections = document.querySelectorAll('section[id]');
         if (sections.length && navLinks.length) {
             const sectionObserver = new IntersectionObserver((entries) => {
@@ -161,7 +149,6 @@
             sections.forEach(s => sectionObserver.observe(s));
         }
 
-        // --- Hamburger menu toggle ---
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         if (hamburger && navMenu) {
@@ -171,14 +158,13 @@
             });
         }
 
-        // --- Continue button functionality ---
         const continueBtn = document.querySelector('.continue-btn');
         const welcomeSection = document.getElementById('welcome');
         if (continueBtn && welcomeSection) {
             continueBtn.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent default anchor behavior
-                welcomeSection.style.display = 'none'; // Hide the welcome section
-                document.getElementById('home').scrollIntoView({ behavior: 'smooth' }); // Scroll to home
+                e.preventDefault();
+                welcomeSection.style.display = 'none';
+                document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
             });
         }
     });
@@ -188,50 +174,45 @@
 <section class="interest" id="about">
     <div class="grid">
         <h2>About Me</h2>
-         <div class="two-column">
-            <h2 class="reveal"data-reveal-delay="100"></h2>
-            <p class="sub reveal" data-reveal-delay="200">
-        <div class="about-grid reveal">
-                I am a data-oriented professional with a B.Com in Accounting & Finance from Mohammed Sathak College of Arts and Science. I currently work as an Operations Executive at ArmsoftTechAir, supporting operational processes and using data to improve efficiency. 
-                I have practical experience in data analysis, visualization, and reporting using Excel, SQL, Power BI, Python, and Tableau. During my internship, I supported data collection, cleaning, and dashboard development to deliver actionable business 
-                insights and automate reporting processes.
-            </p>
+        <div class="two-column">
+            <div class="about-grid reveal">
+                I am a data-oriented professional with a B.Com in Accounting &amp; Finance from Mohammed Sathak College of Arts and Science. I currently work as an Operations Executive at Armsoft TechAir, where I support data-driven operational work and process improvement.
+                <br><br>
+                I have practical experience in data analysis, reporting, visualization, data cleaning, and automation using Excel, SQL, Power BI, Python, and Tableau. My current work also involves Excel VBA/macros and processing large-scale voter data for Election Commission projects.
+                <br><br>
+                I enjoy turning raw data into useful insights, building dashboards, and automating repetitive processes to improve accuracy and efficiency.
+            </div>
         </div>
-
-
     </div>
 </section>
-
-
-
 
 <!-- EXPERIENCE -->
 <section class="interest" id="experience">
     <h2>Experience</h2>
     <div class="experience-grid">
         <article class="cert-card work-card reveal" data-reveal-delay="70">
-            <img class="cert-logo-img" src="Images/AS.jpeg" alt="ArmsoftTechAir logo">
+            <img class="cert-logo-img" src="Images/AS.jpeg" alt="Armsoft TechAir logo">
             <h4>Operations Executive</h4>
-            <p class="cert-meta">ArmsoftTechAir <span class="cert-date">Dec 2025 – Present</span></p>
-            <p class="sub">Supporting operational processes, building reports, and improving workflows using data analysis and Excel/SQL.</p>
+            <p class="cert-meta">Armsoft TechAir <span class="cert-date">Dec 2025 – Present</span></p>
+            <p class="sub">Supporting operational data processes, cleaning, validation, reporting, and workflow automation.</p>
             <ul>
-                <li>Improved process efficiency through data-driven insights</li>
-                <li>Prepared weekly reports and dashboards</li>
-                <li>Collaborated cross-functionally to implement changes</li>
+                <li>Work on Election Commission of India projects involving large-scale voter data.</li>
+                <li>Perform data cleaning, validation, and processing using Excel, VBA, and Python.</li>
+                <li>Automate repetitive data extraction and processing workflows to improve accuracy and efficiency.</li>
+                <li>Build and maintain Excel-based workflows for recurring operational tasks.</li>
             </ul>
         </article>
 
         <article class="cert-card internship-card reveal" data-reveal-delay="110">
-            <img class="cert-logo-img" src="Images/SIT.png" alt="Shanthi IT Solution logo">
+            <img class="cert-logo-img" src="Images/SIT.png" alt="Data Analyst internship">
             <h4>Data Analyst Intern</h4>
-            <p class="cert-meta">Shanthi IT Solution, Chennai <span class="cert-date">July 2025 – Oct 2025</span></p>
-            <a class="cert-link" href="Certificates/Divakar R Data Analytics Internship.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
-            <p class="sub"></p>
+            <p class="cert-meta">Labmentix <span class="cert-date">July 2025 – Oct 2025</span></p>
+            <p class="sub">Hands-on experience supporting data analysis, dashboard development, reporting, and data preparation.</p>
             <ul>
-                <li>Assisted in data collection, cleaning, and preprocessing using SQL &amp; Excel</li>
-                <li>Built interactive Power BI dashboards for real-time client projects</li>
-                <li>Generated weekly reports with KPIs and actionable insights</li>
-                <li>Automated reporting tasks using DAX, reducing manual effort</li>
+                <li>Worked with data collection, cleaning, preprocessing, and analysis using SQL and Excel.</li>
+                <li>Built interactive Power BI dashboards and reports for analytics projects.</li>
+                <li>Prepared KPI-based reports and transformed data into actionable insights.</li>
+                <li>Applied DAX and data visualization techniques to improve reporting workflows.</li>
             </ul>
         </article>
     </div>
@@ -243,104 +224,150 @@
 
     <div class="interest-grid">
         <div class="card reveal" data-reveal-delay="100">
-            <h3>Data Tools & Languages</h3>
+            <h3>Data Analytics</h3>
             <ul class="skill-list">
                 <li class="skill-item" data-skill-delay="0">SQL</li>
                 <li class="skill-item" data-skill-delay="100">MS Excel</li>
-                <li class="skill-item" data-skill-delay="200">Power BI</li>
-                <li class="skill-item" data-skill-delay="300">Python</li>
-                <li class="skill-item" data-skill-delay="400">Tableau</li>
-                <li class="skill-item" data-skill-delay="500">SharePoint</li>
-                
+                <li class="skill-item" data-skill-delay="200">Power Query</li>
+                <li class="skill-item" data-skill-delay="300">Power BI</li>
+                <li class="skill-item" data-skill-delay="400">DAX</li>
+                <li class="skill-item" data-skill-delay="500">Python</li>
+                <li class="skill-item" data-skill-delay="600">Tableau</li>
             </ul>
         </div>
 
         <div class="card reveal" data-reveal-delay="200">
-            <h3>Analytical Skills</h3>
+            <h3>Databases</h3>
             <ul class="skill-list">
-                <li class="skill-item" data-skill-delay="0">Data Wrangling & Cleaning</li>
-                <li class="skill-item" data-skill-delay="100">Data Visualization</li>
-                <li class="skill-item" data-skill-delay="200">Data Modeling</li>
-                <li class="skill-item" data-skill-delay="300">Statistical Analysis</li>
+                <li class="skill-item" data-skill-delay="0">MySQL</li>
+                <li class="skill-item" data-skill-delay="100">PostgreSQL</li>
+                <li class="skill-item" data-skill-delay="200">SQLite</li>
+                <li class="skill-item" data-skill-delay="300">Supabase</li>
             </ul>
         </div>
 
+        <div class="card reveal" data-reveal-delay="300">
+            <h3>Automation &amp; Data</h3>
+            <ul class="skill-list">
+                <li class="skill-item" data-skill-delay="0">Excel VBA / Macros</li>
+                <li class="skill-item" data-skill-delay="100">Data Cleaning</li>
+                <li class="skill-item" data-skill-delay="200">Data Transformation</li>
+                <li class="skill-item" data-skill-delay="300">Data Automation</li>
+                <li class="skill-item" data-skill-delay="400">OCR</li>
+                <li class="skill-item" data-skill-delay="500">PDF Processing</li>
+                <li class="skill-item" data-skill-delay="600">Selenium</li>
+            </ul>
+        </div>
+
+        <div class="card reveal" data-reveal-delay="400">
+            <h3>Development &amp; Tools</h3>
+            <ul class="skill-list">
+                <li class="skill-item" data-skill-delay="0">HTML</li>
+                <li class="skill-item" data-skill-delay="100">CSS</li>
+                <li class="skill-item" data-skill-delay="200">JavaScript</li>
+                <li class="skill-item" data-skill-delay="300">Git</li>
+                <li class="skill-item" data-skill-delay="400">GitHub</li>
+            </ul>
+        </div>
     </div>
 </section>
 
 <!-- PROJECTS -->
 <section class="projects" id="projects">
-    <h2>Projects</h2>
-    <p class="sub">Take a look at my recent data analytics work</p>
+    <h2>Featured Projects</h2>
+    <p class="sub">A selection of my data analytics and development work</p>
 
     <div class="project-grid">
-
         <div class="project-card reveal" data-reveal-delay="80">
-            <img src="Images/Screenshot (321).png" alt="Movie Analysis Dashboard">
+            <img src="Images/Screenshot%20(321).png" alt="Movie Analysis Dashboard">
+            <h3>Movie Analysis Dashboard</h3>
             <ul class="project-bullets">
-                <li>Collected and cleaned 5K+ movie & TV show records (Excel)</li>
-                <li>Analyzed trends and key metrics using Power BI</li>
-                <li>Built interactive dashboards for:
-                    <ul>
-                        <li>Genre popularity</li>
-                        <li>Country-wise production</li>
-                        <li>Rating distribution</li>
-                        <li>Release trends</li>
-                    </ul>
-                </li>
+                <li>Cleaned 5K+ movie and TV show records using Excel.</li>
+                <li>Analyzed trends and key metrics using Power BI.</li>
+                <li>Built interactive views for genre, country, ratings, and release trends.</li>
             </ul>
         </div>
 
         <div class="project-card reveal" data-reveal-delay="140">
-            <img src="Images/Screenshot (55).png" alt="IPL Data Analysis">
+            <img src="Images/Screenshot%20(55).png" alt="IPL Data Analysis Dashboard">
             <h3>IPL Data Analysis Dashboard</h3>
-            <p>
-                <ul class="project-bullets">
-                    <li>Cleaned and analyzed IPL datasets using Excel and PowerBI</li>
-                    <li>Created dashboards highlighting player performance, match trends,
-                        win percentages, and key performers.</li>
-                </ul>
-            </p>
+            <ul class="project-bullets">
+                <li>Cleaned and analyzed IPL datasets using Excel and Power BI.</li>
+                <li>Created dashboards for player performance, match trends, win percentages, and key performers.</li>
+            </ul>
         </div>
 
         <div class="project-card reveal" data-reveal-delay="200">
-            <img src="Images/Screenshot (322).png" alt="Bank Loan Analysis">
+            <img src="Images/Screenshot%20(322).png" alt="Bank Loan Analysis">
             <h3>Bank Loan Analysis</h3>
             <ul class="project-bullets">
-                <li>Analyzed bank loan data to classify loans into Good Loans (Fully Paid, Current) and Bad Loans (Charged Off).</li>
-                <li>Calculated Good Loan Percentage using conditional aggregation to measure overall loan portfolio quality.</li>
-                <li>Identified the total number of good loan applications to evaluate borrower reliability.</li>
-                <li>Computed total funded amount for good loans to assess capital allocation efficiency.</li>
-                <li>Calculated total amount received from good loans to measure repayment performance.</li>
-                <li>Derived Bad Loan Percentage to evaluate default risk within the loan portfolio.</li>
-                <li>Used CASE WHEN conditions, COUNT, and SUM functions to generate actionable KPIs.</li>
-                <li>Delivered data-driven insights to support risk assessment and loan performance monitoring.</li>
+                <li>Analyzed loan data to classify good and bad loans.</li>
+                <li>Used SQL aggregation and CASE WHEN logic to calculate portfolio KPIs.</li>
+                <li>Evaluated funded amounts, repayments, loan quality, and default risk.</li>
             </ul>
         </div>
-        <div class="project-card reveal" data-reveal-delay="200">
-            <img src="Images/Screenshot (468).png" alt="My Daily Tracker">
+
+        <div class="project-card reveal" data-reveal-delay="260">
+            <img src="Images/Screenshot%20(468).png" alt="My Daily Tracker">
             <h3>My Daily Tracker</h3>
             <ul class="project-bullets">
                 <li>Built a web-based activity and expense tracking system.</li>
                 <li>Tracks daily activities, time logs, and expenses.</li>
-                <li>Displays dashboard with daily & monthly summaries.</li>
-                <li>Visualizes spending using charts.</li>
-                <li>Clean and responsive UI design.</li>
-               
+                <li>Displays daily and monthly summaries with spending charts.</li>
             </ul>
-             <a href="https://divakar07-pixel.github.io/Daily-tracker/" 
-   target="_blank" 
-   class="project-link" 
-   rel="noopener noreferrer">
-   Live Demo →
-</a>
+            <a href="https://divakar07-pixel.github.io/Daily-tracker/" target="_blank" class="project-link" rel="noopener noreferrer">Live Demo →</a>
+        </div>
+    </div>
+
+    <div style="margin-top:25px; text-align:center;">
+        <a href="#more-projects" class="project-link">View More Projects →</a>
+    </div>
+</section>
+
+<!-- MORE PROJECTS -->
+<section class="projects" id="more-projects">
+    <h2>More Projects</h2>
+    <p class="sub">Explore additional automation, analytics, and application projects</p>
+
+    <div class="project-grid">
+        <div class="project-card reveal" data-reveal-delay="80">
+            <h3>Election &amp; Voter Data Automation</h3>
+            <ul class="project-bullets">
+                <li>Automated large-scale voter data cleaning, validation, and processing workflows.</li>
+                <li>Used Excel VBA, Python, OCR, and PDF processing for repetitive data tasks.</li>
+                <li>Designed workflows to improve accuracy and reduce manual processing time.</li>
+            </ul>
+        </div>
+
+        <div class="project-card reveal" data-reveal-delay="140">
+            <h3>E-Rolls PDF Downloader &amp; Automation</h3>
+            <ul class="project-bullets">
+                <li>Built Python automation for downloading electoral roll PDFs from the portal.</li>
+                <li>Used Selenium, Excel input files, CAPTCHA handling, and batch processing.</li>
+                <li>Added resume and operational controls for large download runs.</li>
+            </ul>
+        </div>
+
+        <div class="project-card reveal" data-reveal-delay="200">
+            <h3>Delivery / Order Tracking System</h3>
+            <ul class="project-bullets">
+                <li>Built a delivery tracking application for order and driver workflows.</li>
+                <li>Includes order status tracking, delivery timelines, driver workflows, and location features.</li>
+                <li>Worked with modern web technologies and a database-backed architecture.</li>
+            </ul>
+        </div>
+
+        <div class="project-card reveal" data-reveal-delay="260">
+            <h3>TeamBoard / Task Management</h3>
+            <ul class="project-bullets">
+                <li>Developed a team task-management dashboard with tasks, notifications, and project workflows.</li>
+                <li>Worked with Supabase for database and application data management.</li>
+                <li>Focused on practical dashboard UI and workflow automation.</li>
+            </ul>
         </div>
     </div>
 </section>
 
-
-
-<!-- CERTIFICATIONS -->
 <!-- CERTIFICATIONS -->
 <section class="interest" id="certifications">
     <h2 class="reveal">Certifications</h2>
@@ -350,7 +377,6 @@
             <img class="cert-logo-img" src="Images/BT.jpeg" alt="Besant Technologies logo">
             <h4>Data Analytics Course</h4>
             <p class="cert-meta">Besant Technologies, Chennai</p>
-            <!-- Replace href with real certificate link or PDF -->
             <a class="cert-link" href="Certificates/Divakar R data nalytics.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
         </article>
 
@@ -380,9 +406,9 @@
 <!-- RESUME -->
 <section class="interest" id="resume">
     <h2>Resume</h2>
-    <p class="sub">Download my resume to learn more about my experience and skills.</p>
+    <p class="sub">View my latest Data Analytics resume to learn more about my experience, skills, and projects.</p>
     <div class="resume-download">
-        <a href="Divakar R Data Analytics Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn primary">View Resume</a>
+        <a href="Divakar%20R%20Data%20Analytics%20Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn primary">View Resume</a>
     </div>
 </section>
 
@@ -391,7 +417,7 @@
     <h2>Contact</h2>
 
     <div class="contact-card reveal" role="region" aria-label="Contact links" data-reveal-delay="320">
-        <p class="contact-title">Contact</p>
+        <p class="contact-title">Let's Connect</p>
 
         <div class="contact-info">
             <p class="contact-info-line">✉️ Email: <a href="mailto:diwakarsurya2@gmail.com">diwakarsurya2@gmail.com</a></p>
@@ -403,11 +429,9 @@
             <a class="btn github" href="https://github.com/Divakar07-pixel" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
 
-        <!-- Inline contact form (simple) — posts to Formsubmit.co -->
         <div class="contact-form-inline">
             <p class="form-title">Or send me a message</p>
             <form id="miniContactForm" action="https://formsubmit.co/diwakarsurya2@gmail.com" method="POST">
-                <!-- Formsubmit hidden controls; _next will be set on submit to return with ?sent=1 -->
                 <input type="hidden" name="_subject" value="Portfolio contact">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" id="_next" value="">
@@ -438,7 +462,7 @@
 </section>
 
 <footer>
-    <p>© 2025 Divakar R | Data Analyst Portfolio</p>
+    <p>© 2026 Divakar R | Data Analyst Portfolio</p>
 </footer>
 
 </body>
